@@ -3,12 +3,14 @@ const weatherBtn = document.getElementById('weather-btn');
 let weatherHead = document.getElementById('weather-data');
 
 
-//fetch request to the weather API using location
+//fetch request using async and await 
+//to the weather API using location
 //entered by user
-function getWeatherInfo(location) {
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=b0afff28fa4d7fcfcd9ede1a41174b11`)
-    .then(response => response.json())
-    .then(response => {weatherData = displayWeather(response.weather[0].main)});
+async function getWeatherInfo(location) {
+    const weatherInfo = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=b0afff28fa4d7fcfcd9ede1a41174b11`)
+    const response = await weatherInfo.json();
+    displayWeather(response.weather[0].main);
+
 }
 
 //display weather
